@@ -2,6 +2,8 @@ from app import app
 import urllib.request, json
 from .models import news
 
+News = news.News
+
 api_key = app.config['NEWS_API_KEY']
 
 headlines_base_url = app.config['TOP_HEADLINES_BASE_URL']
@@ -20,5 +22,33 @@ def get_news(title):
 
         news_results = None
 
-        if get_news_response['articles']
+        if get_news_response['articles']:
+            news_results_list = get_news_response['articles']
+            news_results = process_news_results(news_results_list)
+    return news_results
+
+def process_news_results(news_list):
+    '''
+    function that processes the news result and transforms them into a list of objects
+    
+    Args:
+        news_list: a list of dictionaries that contain news details
+    Returns:
+        news_results: a list of news objects
+    '''
+    news_results = []
+    for news_item in news_list:
+        title = news_item.get('title')
+        description = news_item.get('description')
+        url = news_item.get('url')
+        urlToImage = news_item.get('urlToImage')
+        publishedAt = news_item.get('publishedAt')
+
+    if urlToImage:
+        news_object = News(title, description, url, urlToImage, publishedAt)
+        news_results.append(news_object)
+
+    return news_results
+
+
 
