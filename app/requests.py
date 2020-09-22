@@ -1,21 +1,25 @@
-from app import app
 import urllib.request, json
-from .models import news, source
+from .models import News, Source
 
-News = news.News
-Source = source.Source
 
-api_key = app.config['NEWS_API_KEY']
+api_key = None
 
-headlines_base_url = app.config['TOP_HEADLINES_BASE_URL']
-sources_base_url = app.config['SOURCES_BASE_URL']
-everything_base_url = app.config['EVERYTHING_BASE_URL']
+headlines_base_url = None
+sources_base_url = None
+everything_base_url = None
+
+def configure_request(app):
+    global api_key, headlines_base_url, sources_base_url, everything_base_url
+    api_key = app.config['NEWS_API_KEY']
+    headlines_base_url = app.config['TOP_HEADLINES_BASE_URL']
+    sources_base_url = app.config['SOURCES_BASE_URL']
+    everything_base_url = app.config['EVERYTHING_BASE_URL']
 
 def get_news(topic):
     '''
     function that gets the json response to our url request
     '''
-    get_news_url = headlines_base_url.format(topic,api_key)
+    get_news_url = everything_base_url.format(topic,api_key)
 
     with urllib.request.urlopen(get_news_url) as url:
         get_news_data = url.read()
