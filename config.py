@@ -27,3 +27,8 @@ class DevConfig(Config):
         Config: the parent configuratiion class with general settings
     '''
     DEBUG = True
+
+config_options = {
+'development':DevConfig,
+'production':ProdConfig
+}
