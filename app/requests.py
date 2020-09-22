@@ -11,11 +11,11 @@ headlines_base_url = app.config['TOP_HEADLINES_BASE_URL']
 sources_base_url = app.config['SOURCES_BASE_URL']
 everything_base_url = app.config['EVERYTHING_BASE_URL']
 
-def get_news(title):
+def get_news(topic):
     '''
     function that gets the json response to our url request
     '''
-    get_news_url = headlines_base_url.format(api_key)
+    get_news_url = headlines_base_url.format(topic,api_key)
 
     with urllib.request.urlopen(get_news_url) as url:
         get_news_data = url.read()

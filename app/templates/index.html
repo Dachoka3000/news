@@ -9,28 +9,39 @@
 {% endblock %}
 
 {% block content %}
-<!--General sources content-->
-<h3>General news</h3>
-<ul>
-    {{ macro.displaySourceList(general)}}
-</ul>
 
-<!--entertainmetn sources content-->
-<h3>Entertainment</h3>
-<ul>
-    {{ macro.displaySourceList(entertainment)}}
-</ul>
-
-<!--business sources content-->
-<h3>Business</h3>
-<ul>
-    {{ macro.displaySourceList(business)}}
-</ul>
-
-<!--health sources content-->
-<h3>Health</h3>
-<ul>
-    {{ macro.displaySourceList(health)}}
-</ul>
-
+<div class="container-fluid">
+    <h1>YOUR NEWS SOURCES</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h3>General news</h3>
+                <ul>
+                    {{ macro.displaySourceList(general)}}
+                </ul>
+            </div>
+            <div class="col-md-3">
+            <!--entertainmetn sources content-->
+                <h3>Entertainment</h3>
+                <ul>
+                    {{ macro.displaySourceList(entertainment)}}
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <!--business sources content-->
+                <h3>Business</h3>
+                <ul>
+                    {{ macro.displaySourceList(business)}}
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <!--health sources content-->
+                <h3>Health</h3>
+                <ul>
+                    {{ macro.displaySourceList(health)}}
+                </ul>   
+            </div>
+        </div>    
+    </div>
+</div>
 {% endblock %}

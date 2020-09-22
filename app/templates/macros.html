@@ -7,16 +7,18 @@
 {% endmacro %}
 {% macro displayNewsList(news_list) %}
     {% for news_item in news_list %}
-    <div class="card">
-        <div class="card-header">
-            <img class="card-img" src="{{news_item.urlToImage" alt="news image">
+        <div class="card">
+            <div class="card-header">
+                <img class="card-img" src="{{news_item.urlToImage}}" alt="news image">
+            </div>
+            <div class="card-body">
+                <h6>{{news_item.title}}</h6>
+                <p>{{news_item.description}}</p>
+                <p><a href="{{news_item.url}}">See More</a></p>
+            </div>
+            <div class="card-footer">
+                <p>Published : {{news_item.publishedAt}}</p>
+            </div>
         </div>
-        <div class="card-body">
-            <h6>{{news_item.title}}</h6>
-            <p>{{news_item.description}}</p>
-            <p><a href="{{news_item.url}}">See More</a></p>
-        </div>
-        <div class="card-footer">
-            <p>Published : {{news_item.publishedAt}}</p>
-        </div>
-    </div>
+    {% endfor %}
+{% endmacro %}
