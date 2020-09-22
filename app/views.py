@@ -16,9 +16,31 @@ def index():
     title = 'News Today'
     return render_template('index.html', title = title, general = general, entertainment = entertainment, business = business, health = health)
 
-@app.route('/news/business')
-def news():
+@app.route('/technews')
+def techienews():
     '''
-    view news page function that returns the news details page and its data
+    view  technews page function that returns the news details page and its data
     '''
-    return render_template('news.html')
+    technology = get_news('technology')
+    title = 'Tech News'
+    return render_template('technews.html',title = title, technology= technology)
+
+@app.route('/economy')
+def economynews():
+    '''
+    view economy news page function that returns economy news details
+    '''
+    economy = get_news('economy')
+    title = 'Economy news'
+    return render_template('econ.html',title = title, economy = economy )
+
+@app.route('/news/<topic>')
+def news(topic):
+    '''
+    view news function that returns articles page function and its data
+    '''
+    article = get_news(topic)
+    title = f'{article.title}'
+
+    return render_template('news.html', title = title, article=article)
+
