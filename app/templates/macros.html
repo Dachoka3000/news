@@ -1,24 +1,53 @@
 {% macro displaySourceList(source_list) %}
 
     {% for source in source_list %}
-        <li><button><a href="{{source.url}}">{{source.name}}</a></button></li>
+        <div class="card" style="background-color: beige; border: 3px solid black; margin-bottom: 5px; text-align: center;">
+            <div class="card-body" style="font-size: large; font-weight: bold;">
+                <h6><a href="/source/{{source.id}}">{{source.name}}</a></h6>
+                <p>{{source.category}}</p>
+                <p><a href="{{source.url}}">Go To Site</a></p>
+            </div>
+            <div class="card-footer">
+                <p>Language : {{source.language}}</p>
+            </div>
+        </div>
     {% endfor %}
 
 {% endmacro %}
 {% macro displayNewsList(news_list) %}
-    {% for news_item in news_list %}
+    {% for news_items in news_list %}
+        
         <div class="card">
             <div class="card-header">
-                <img class="card-img" src="{{news_item.urlToImage}}" alt="news image">
+                <img class="img-responsive" src="{{news_items.urlToImage}}" alt="news image" styles="height:30px">
             </div>
             <div class="card-body">
-                <h6>{{news_item.title}}</h6>
-                <p>{{news_item.description}}</p>
-                <p><a href="{{news_item.url}}">See More</a></p>
+                <h6>{{news_items.title}}</h6>
+                <p>{{news_items.description}}</p>
+                <p><a href="{{news_items.url}}">See More</a></p>
             </div>
             <div class="card-footer">
-                <p>Published : {{news_item.publishedAt}}</p>
+                <p>Published : {{news_items.publishedAt}}</p>
             </div>
         </div>
+        
     {% endfor %}
+{% endmacro %}
+{% macro displaySourceNewsList(article_list)%}
+        {% for article in article_list %}
+        <div class="card">
+            <div class="card-header">
+                <img class="img-responsive" src="{{article.urlToImage}}" alt=" sourcenews image" styles="height:30px">
+            </div>
+            <div class="card-body">
+                <h5>{{article.title}}</h5>
+                <p>{{article.description}}</p>
+                <p><a href="{{article.url}}">See More</a></p>
+                <p>Published:{{article.publishedAt}}</p>
+            </div>
+        </div>
+
+
+
+        {%endfor%}
 {% endmacro %}

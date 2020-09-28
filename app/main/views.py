@@ -1,22 +1,22 @@
-from flask import render_template
-from app import app
-from .requests import get_news, get_source
+from flask import render_template, request, redirect, url_for
+from . import main
+from ..requests import get_source, get_news, get_source_news
 
 #views
-@app.route('/')
+@main.route('/')
 def index():
 
     '''
     view root page function that returns the index page and its data
     '''
     general = get_source('general')
-    entertainment = get_source('entertainment')
-    business = get_source('business')
-    health = get_source('health')
+    # entertainment = get_source('entertainment')
+    # business = get_source('business')
+    # health = get_source('health')
     title = 'News Today'
-    return render_template('index.html', title = title, general = general, entertainment = entertainment, business = business, health = health)
+    return render_template('index.html', title = title, general = general)
 
-@app.route('/technews')
+@main.route('/technews')
 def techienews():
     '''
     view  technews page function that returns the news details page and its data
@@ -25,22 +25,22 @@ def techienews():
     title = 'Tech News'
     return render_template('technews.html',title = title, technology= technology)
 
-@app.route('/economy')
+@main.route('/economy')
 def economynews():
     '''
     view economy news page function that returns economy news details
     '''
-    economy = get_news('economy')
+    economy = get_news('business')
     title = 'Economy news'
     return render_template('econ.html',title = title, economy = economy )
 
-@app.route('/news/<topic>')
-def news(topic):
+@main.route('/source/<id>')
+def news(id):
     '''
     view news function that returns articles page function and its data
     '''
-    article = get_news(topic)
-    title = f'{article.title}'
+    article_list = get_source_news(id)
+    title = f'{id}'
 
-    return render_template('news.html', title = title, article=article)
+    return render_template('articles.html', title = title, article_list= article_list)
 

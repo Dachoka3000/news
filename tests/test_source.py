@@ -13,4 +13,4 @@ class NewsTest(unittest.TestCase):
         self.new_source = Source("1234","abc news","https://abcnews.go.com","business","en")
 
     def test_instance(self):
-        self.assertTrue(isinstance(self.new_news, News))
+        self.assertTrue(isinstance(self.new_source, Source))

@@ -10,3 +10,9 @@ body {
 
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#A9FF68", endColorstr="#FF8989", GradientType=1 );
 }
+h1 {
+    text-align: center;
+    font-weight: bolder;
+    align-items: center;
+    justify-content: center;
+}
